@@ -1,18 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { contactsActions, contactsSelectors } from '../../redux/contacts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { contactsActions, contactsSelectors } from '../../redux';
 import { variants } from '../../utils/motionVar';
 import s from './Filter.module.css';
 
-export default function Filter() {
+function Filter() {
   const dispatch = useDispatch();
   const filter = useSelector(contactsSelectors.getFilter);
   const contacts = useSelector(contactsSelectors.getContacts);
-  const error = useSelector(contactsSelectors.getError);
 
   return (
     <>
-      {contacts.length > 1 && !error && (
+      {contacts.length > 1 && (
         <AnimatePresence>
           <motion.label
             initial="initial"
@@ -32,8 +31,6 @@ export default function Filter() {
               className={s.input}
               type="text"
               value={filter}
-              name="filter"
-              placeholder="input name"
               onChange={e =>
                 dispatch(contactsActions.filterContact(e.target.value))
               }
@@ -44,3 +41,5 @@ export default function Filter() {
     </>
   );
 }
+
+export default Filter;

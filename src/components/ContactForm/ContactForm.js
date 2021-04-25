@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Cleave from 'cleave.js/react';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import { toast } from 'react-toastify';
-import { contactsOperations, contactsSelectors } from '../../redux';
-import LoaderComponent from '../LoaderComponent/LoaderComponent';
+import NumberFormat from 'react-number-format';
+// import Button from '@material-ui/core/Button';
+import Button from '../Button';
+import LoaderComponent from '../LoaderComponent';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -45,28 +47,14 @@ export default function ContactForm() {
     return name.trim() === '' || number.trim() === '';
   };
 
-  const checkValidNumber = number => {
-    return !/\d{3}[-]\d{2}[-]\d{2}/g.test(number);
-  };
-
   const handleSubmit = e => {
     e.preventDefault();
     if (checkRepeatName(name)) {
-      toast.warn(`${name} is already in the phonebook.`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      return toast.warn(`${name} is already in the phonebook.`);
     } else if (checkRepeatNumber(number)) {
-      toast.warn(`${number} is already in the phonebook.`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      return toast.warn(`${number} is already in the phonebook.`);
     } else if (checkEmptyQuery(name, number)) {
-      toast.info("Enter the contact's name and number phone!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } else if (checkValidNumber(number)) {
-      toast.error('Enter the correct number phone!', {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      return toast.info("Enter the contact's name and number phone!");
     } else {
       dispatch(contactsOperations.addContact(name, number));
     }
@@ -88,14 +76,16 @@ export default function ContactForm() {
           name="name"
           value={name}
           onChange={handleChange}
-          placeholder="Jennifer Aniston"
+          placeholder="Enter name"
         />
       </label>
       <label className={s.label}>
         <span className={s.title}>Number</span>
-        <Cleave
-          options={{ delimiter: '-', blocks: [3, 2, 2] }}
-          placeholder="734-85-92"
+        <NumberFormat
+          placeholder="Enter phone number"
+          format="(###) ###-##-##"
+          mask="_"
+          pattern="^[0-9\s\(\)\-]{15}"
           type="tel"
           name="number"
           value={number}
@@ -103,11 +93,18 @@ export default function ContactForm() {
           className={s.input}
         />
       </label>
-      {/* {!isLoading && !error && ( */}
-      <button className={s.btn} type="submit">
-        Add contact
-      </button>
-      {/* )} */}
+
+      {!isLoading && !error && (
+        <Button value={'Add contact'} />
+        // <Button
+        //   variant="contained"
+        //   color="secondary"
+        //   size="large"
+        //   type="submit"
+        // >
+        //   Add contact
+        // </Button>
+      )}
       <h2>Contacts</h2>
       {isLoading && <LoaderComponent />}
     </form>

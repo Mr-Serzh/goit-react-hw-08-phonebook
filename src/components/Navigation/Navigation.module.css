@@ -1,0 +1,22 @@
+.link {
+  display: inline-block;
+  padding: 20px 0;
+  font-weight: 700;
+  color: var(--primaryTextColor);
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accentColor);
+}
+
+.activeLink {
+  composes: link;
+  color: var(--accentColor);
+}
+
+.link:not(:last-child) {
+  margin-right: 30px;
+}

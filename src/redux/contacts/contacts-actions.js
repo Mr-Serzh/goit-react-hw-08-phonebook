@@ -10,7 +10,7 @@ import {
   DELETE_CONTACT_SUCCESS,
   DELETE_CONTACT_ERROR,
   FILTER_CONTACT,
-} from './types';
+} from './contacts-types';
 
 export const fetchContactsRequest = createAction(FETCH_CONTACTS_REQUEST);
 export const fetchContactsSuccess = createAction(FETCH_CONTACTS_SUCCESS);

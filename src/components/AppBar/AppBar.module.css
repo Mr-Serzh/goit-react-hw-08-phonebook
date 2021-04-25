@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid;
+  border-radius: 5px;
+
+  border-color: var(--secondaryTextColor);
+}
