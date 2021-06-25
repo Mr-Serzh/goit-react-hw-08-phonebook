@@ -15,7 +15,8 @@ import {
 } from './auth-actions';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
+// axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
   set(token) {
