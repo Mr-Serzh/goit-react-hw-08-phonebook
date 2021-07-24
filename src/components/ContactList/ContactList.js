@@ -27,7 +27,7 @@ export default function ContactList() {
                 variants={variants}
               >
                 <p className={s.info}>
-                  <b>{name}</b>
+                  <b className={s.name}>{name}:</b>
                   <em>{number}</em>
                 </p>
                 <IconButton

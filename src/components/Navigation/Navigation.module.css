@@ -1,9 +1,9 @@
 .link {
   display: inline-block;
-  padding: 20px 0;
+  padding: 10px 0;
   font-weight: 700;
   color: var(--primaryTextColor);
-  font-size: 24px;
+  font-size: 22px;
   text-decoration: none;
 }
 
@@ -18,5 +18,16 @@
 }
 
 .link:not(:last-child) {
-  margin-right: 30px;
+  margin-right: 15px;
+}
+
+@media screen and (min-width: 480px) {
+  .link {
+    padding: 20px 0;
+    font-size: 24px;
+  }
+
+  .link:not(:last-child) {
+    margin-right: 30px;
+  }
 }

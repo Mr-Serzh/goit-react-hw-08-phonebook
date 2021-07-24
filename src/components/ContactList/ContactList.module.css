@@ -9,6 +9,10 @@
   font-size: 18px;
 }
 
+.name {
+  margin-right: 10px;
+}
+
 .item {
   display: flex;
   justify-content: space-between;

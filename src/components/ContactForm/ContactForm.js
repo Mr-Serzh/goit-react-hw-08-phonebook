@@ -105,7 +105,7 @@ export default function ContactForm() {
         //   Add contact
         // </Button>
       )}
-      <h2>Contacts</h2>
+      {/* <h2>Contacts</h2> */}
       {isLoading && <LoaderComponent />}
     </form>
   );
