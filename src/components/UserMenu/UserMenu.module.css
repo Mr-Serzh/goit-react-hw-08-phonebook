@@ -19,16 +19,7 @@
   overflow: hidden;
 }
 
-/* .MuiButtonText {
-  border: none;
-  font-family: 'Dancing Script', cursive;
-  font-weight: 700;
-  font-size: 24px;
-  color: var(--primaryTextColor);
-  text-transform: none;
-} */
-
-.btn {
+.container .button {
   border: none;
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
@@ -37,14 +28,10 @@
   text-transform: none;
 }
 
-.btn:focus,
-.btn:hover {
-  border: none;
-  font-family: 'Dancing Script', cursive;
-  font-weight: 700;
-  font-size: 24px;
+.container .button:focus,
+.container .button:hover {
   color: var(--accentColor);
-  background-color: transparent;
+  background-color: inherit;
 }
 
 @media screen and (max-width: 550px) {
